@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block app_content %}
+<div class="main_home">
+    <h4>Select a pre-processed route or upload a new one</h4>
+    <div class="row">
+        <div class="col-sm-2">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ wtf.form_field(form.route_file, class="route-file", placeholder="Route
+                    File") }}
+                </p>
+                <p>
+                    {{ wtf.form_field(form.route_choice, class="route-choice", placeholder="Route
+                   select") }}
+                </p>
+                <p>
+                    {{ wtf.form_field(form.fear_level, class="route-choice", min="1", max="3",
+                    placeholder="Fear level") }}
+                </p>
+                <p>
+                    {{ form.submit() }}</p>
+                </p>
+            </form>
+        </div>
+
+        <div class="col-md-auto">
+        {% if route_map %}
+            <h2>{{ route_name }}</h2>
+            <iframe srcdoc="{{ route_map }}" height="600" width="1200"></iframe>
+        {% else %}
+            <h2 class="text-center">No map loaded</h2>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

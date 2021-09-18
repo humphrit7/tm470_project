@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>No data available for selected route</h1>
+    <p>Terribly sorry, but we do not have data available for the route you have selected</p>
+    <p>Data are currently available to process routes within the below maximum and minimum
+        latitude and longitude</p>
+    {% for table in tables %}
+        {{ titles[loop.index] }}
+        {{ table|safe }}
+    {% endfor %}
+    <p><a href="{{ url_for('home') }}">Back</a></p>
+{% endblock %}

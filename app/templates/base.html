@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}
+        {{title}}
+    {% else %}
+        Mountain Fear Finder
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="bg-success text-green">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+    <h1 class="display-1 text-center" style="font-family:impact;font-size:750%">Mountain
+        Fear
+        Finder!</h1>
+            </div>
+
+    </div>
+    <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    {% block app_content %}{% endblock %}
+</div>
+<div>
+    <footer>
+        <p>Author: Thomas Humphries</p>
+        <p>Last updated: 2021-09-11</p>
+        <p>All results are indicative only. The author takes no responsibility for a user's
+            decision to go on a route based on the results of running this application</p>
+        <p>Do not use this for navigation. Always have a map and compass and know how to use
+            them</p>
+    </footer>
+</div>
+{% endblock %}
